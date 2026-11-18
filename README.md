@@ -1,9 +1,9 @@
 # Peritwinkle
 
 ### License
-![License: MIT](https://img.shields.io/badge/License-MIT-lightblue)(https://github.com/SoulexDev/Assembly-Engine/blob/main/LICENSE)
+![License: MIT](https://img.shields.io/badge/License-MIT-lightblue)
 
-![Peritwinkle banner](https://github.com/SoulexDev/Peritwinkle/](https://github.com/SoulexDev/Peritwinkle/blob/main/git_assets/peritwinkle_logo.png)
+![Peritwinkle banner](https://github.com/SoulexDev/Peritwinkle/blob/main/git_assets/peritwinkle_logo.png)
 
 ## About
 Peritwinkle is a data oriented 3D renderer using OpenGL. It's designed for realtime rendering, and for quickly exporting images of high quality renders(really, its a learning project, but you don't know that)
