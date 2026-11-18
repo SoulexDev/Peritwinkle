@@ -49,5 +49,13 @@
     <ClInclude Include="src\graphics\material.hpp" />
     <ClInclude Include="src\core\transform.hpp" />
     <ClInclude Include="src\core\object.hpp" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Peritwinkle.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="git_assets\peritwinkle_logo_small.png" />
+    <Image Include="peritwinkle_logo_small.ico" />
   </ItemGroup>
 </Project>
