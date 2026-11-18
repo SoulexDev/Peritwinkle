@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Peritwinkle.vcxproj" Id="09a9a781-004e-4be0-8f68-746808d92c2d" />
+</Solution>
