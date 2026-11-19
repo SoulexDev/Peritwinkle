@@ -22,6 +22,9 @@
     <ClCompile Include="src\lib\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\lib\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\lib\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\core\camera.cpp" />
+    <ClCompile Include="src\core\systems\free_cam.cpp" />
+    <ClCompile Include="src\core\object.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".csstools.json" />
@@ -53,6 +56,8 @@
     <ClInclude Include="src\lib\imgui\imstb_rectpack.h" />
     <ClInclude Include="src\lib\imgui\imstb_textedit.h" />
     <ClInclude Include="src\lib\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\core\camera.hpp" />
+    <ClInclude Include="src\core\systems\free_cam.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peritwinkle.rc" />

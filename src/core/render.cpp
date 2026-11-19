@@ -1,17 +1,24 @@
 #include "window.hpp"
+#include "camera.hpp"
+#include "object.hpp"
+
+#include "systems/free_cam.hpp"
+
 #include "../interface/gui_render.hpp"
+
 #include "../graphics/vertex.hpp"
 #include "../graphics/vertex_buffer.hpp"
 #include "../graphics/mesh.hpp"
 #include "../graphics/material.hpp"
 #include "../graphics/shader.hpp"
+
 #include <vector>
 #include <string>
 
 namespace Peritwinkle {
 	namespace Core {
 		bool render() {
-			Window window(800, 600, "Peritwinkle");
+			Window window(1280, 720, "Peritwinkle", false);
 			GUI::setup_gui(window.window);
 
 			//logging
@@ -44,6 +51,14 @@ namespace Peritwinkle {
 			Graphics::Material mat(shader);
 			Graphics::Mesh mesh(vb, mat);
 
+			Object testObj = Object(mesh);
+
+			Camera camera = Camera::create_fov_camera(window.window, 75, 0.1f, 1000.0f);
+			camera.transform.set_position(glm::vec3(0.0f, 0.0f, -3.0f));
+			Systems::FreeCam freeCam(&camera);
+
+			glEnable(GL_DEPTH_TEST);
+
 			//render loop
 			while (!glfwWindowShouldClose(window.window)) {
 				//time keeping
@@ -60,11 +75,16 @@ namespace Peritwinkle {
 
 				//input
 				Window::process_input(window.window);
+				freeCam.handle_camera(window.window, deltaTime, infoLogs);
 
 				//render 3d
 				glClearColor(0.2f, 0.6f, 1.0f, 1.0f);
-				glClear(GL_COLOR_BUFFER_BIT);
-				mesh.draw();
+				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+				//set the camera perspective so that the projection is always right, even with different window sizes
+				camera.set_perspective();
+				camera.calculate_matrices();
+				testObj.draw_object(camera);
 
 				//render gui
 				GUI::begin_gui();

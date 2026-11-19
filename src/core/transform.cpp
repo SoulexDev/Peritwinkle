@@ -2,6 +2,13 @@
 
 namespace Peritwinkle {
 	namespace Core {
+		Transform::Transform() {
+			position = glm::vec3(0.0f, 0.0f, 0.0f);
+			rotation = glm::quat(glm::vec3(0.0f, 0.0f, 0.0f));
+			scale =    glm::vec3(1.0f, 1.0f, 1.0f);
+
+			set_dirty();
+		}
 		//setters
 		void Transform::set_position(glm::vec3 position) {
 			this->position = position;
@@ -28,6 +35,15 @@ namespace Peritwinkle {
 		}
 		glm::vec3 Transform::get_scale() {
 			return scale;
+		}
+		glm::vec3 Transform::get_forward() {
+			return rotation * glm::vec3(0.0f, 0.0f, 1.0f);
+		}
+		glm::vec3 Transform::get_right() {
+			return rotation * glm::vec3(1.0f, 0.0f, 0.0f);
+		}
+		glm::vec3 Transform::get_up() {
+			return rotation * glm::vec3(0.0f, 1.0f, 0.0f);
 		}
 		glm::mat4 Transform::get_matrix() {
 			if (dirty) {

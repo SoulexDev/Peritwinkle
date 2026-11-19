@@ -9,9 +9,5 @@ namespace Peritwinkle {
 			this->vertexBuffer = vertexBuffer;
 			this->material = material;
 		}
-		void Mesh::draw() {
-			material.use();
-			vertexBuffer.use();
-		}
 	}
 }

@@ -9,9 +9,10 @@ namespace Peritwinkle {
 		struct Window {
 		public:
 			GLFWwindow* window;
-			int resolution[2]{ };
+			int width;
+			int height;
 
-			Window(int width, int height, const char* name);
+			Window(int width, int height, const char* name, bool startFullscreen);
 
 			static void process_input(GLFWwindow* window);
 			static void framebuffer_size_callback(GLFWwindow* window, int width, int height);

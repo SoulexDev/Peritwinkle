@@ -179,6 +179,9 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\camera.cpp" />
+    <ClCompile Include="src\core\object.cpp" />
+    <ClCompile Include="src\core\systems\free_cam.cpp" />
     <ClCompile Include="src\core\time.cpp" />
     <ClCompile Include="src\core\transform.cpp" />
     <ClCompile Include="src\graphics\material.cpp" />
@@ -209,7 +212,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="src\core\camera.hpp" />
     <ClInclude Include="src\core\object.hpp" />
+    <ClInclude Include="src\core\systems\free_cam.hpp" />
     <ClInclude Include="src\core\time.hpp" />
     <ClInclude Include="src\core\transform.hpp" />
     <ClInclude Include="src\graphics\material.hpp" />

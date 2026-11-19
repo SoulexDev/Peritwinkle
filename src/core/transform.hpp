@@ -10,6 +10,8 @@ namespace Peritwinkle {
 	namespace Core {
 		struct Transform {
 		public:
+			Transform();
+
 			void set_position(glm::vec3 position);
 			void set_rotation(glm::quat rotation);
 			void set_scale   (glm::vec3 scale);
@@ -19,10 +21,14 @@ namespace Peritwinkle {
 			glm::quat get_rotation();
 			glm::vec3 get_scale();
 			glm::mat4 get_matrix();
+
+			glm::vec3 get_forward();
+			glm::vec3 get_right();
+			glm::vec3 get_up();
 		private:
-			glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
-			glm::quat rotation = glm::quat(glm::vec3(0.0f, 0.0f, 0.0f));
-			glm::vec3 scale    = glm::vec3(1.0f, 1.0f, 1.0f);
+			glm::vec3 position;
+			glm::quat rotation;
+			glm::vec3 scale;
 			glm::mat4 transformMat;
 			bool dirty;
 		};

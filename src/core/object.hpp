@@ -2,6 +2,7 @@
 #define PERITWINKLE_OBJECT_H
 
 #include "transform.hpp"
+#include "camera.hpp"
 #include "../graphics/mesh.hpp"
 
 namespace Peritwinkle {
@@ -11,6 +12,7 @@ namespace Peritwinkle {
 			Peritwinkle::Graphics::Mesh mesh;
 
 			Object(Peritwinkle::Graphics::Mesh mesh);
+			void draw_object(Camera& camera);
 		};
 	}
 }

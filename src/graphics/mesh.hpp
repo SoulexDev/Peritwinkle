@@ -3,6 +3,7 @@
 
 #include "vertex_buffer.hpp"
 #include "material.hpp"
+#include "../core/camera.hpp"
 
 namespace Peritwinkle {
 	namespace Graphics {
@@ -13,7 +14,6 @@ namespace Peritwinkle {
 
 			Mesh();
 			Mesh(VertexBuffer vertexBuffer, Material material);
-			void draw();
 		};
 	}
 }
