@@ -8,7 +8,7 @@
 
 namespace Peritwinkle {
 	namespace Utility {
-		const char* read_file(const char* filePath) {
+		std::string read_file(const char* filePath) {
 			std::string fileRead;
 			std::ifstream fileStream;
 
@@ -25,10 +25,10 @@ namespace Peritwinkle {
 			}
 			catch(std::ifstream::failure e) {
 				//do logging bs here
-				std::cout << "SHADER NOT SUCCESSFULLY READ. YOU'RE BAD AT PROGRAMMING. GET A FUCKING JOB YOU LOSER." << std::endl;
+				std::cout << e.what() << std::endl;
 			}
 
-			return fileRead.c_str();
+			return fileRead;
 		}
 	}
 }

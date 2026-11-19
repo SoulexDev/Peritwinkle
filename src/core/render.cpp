@@ -1,5 +1,10 @@
 #include "window.hpp"
 #include "../interface/gui_render.hpp"
+#include "../graphics/vertex.hpp"
+#include "../graphics/vertex_buffer.hpp"
+#include "../graphics/mesh.hpp"
+#include "../graphics/material.hpp"
+#include "../graphics/shader.hpp"
 #include <vector>
 #include <string>
 
@@ -14,19 +19,32 @@ namespace Peritwinkle {
 			std::vector<std::string> warningLogs;
 			std::vector<std::string> errorLogs;
 
-			//scene stuff
-			//std::vector<>
-
 			//time stuff
 			float timeLastFrame = glfwGetTime();
 			float secondTimer = 0;
 			int frameCounter = 0;
 			int frameRate = 0;
 
-			infoLogs.push_back("i luh you");
-			warningLogs.push_back("i neutral you");
-			errorLogs.push_back("i HATE you");
+			//test triangle
+			std::vector<Graphics::Vertex> vertices;
+			glm::vec3 norm = glm::vec3(0.0f, 0.0f, -1.0f);
 
+			Graphics::Vertex v1(glm::vec3(-0.5f, -0.5f, 0.0f), norm, glm::vec2(0.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+			Graphics::Vertex v2(glm::vec3(0.5f, -0.5f, 0.0f),  norm, glm::vec2(1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+			Graphics::Vertex v3(glm::vec3(0.0f, 0.5f, 0.0f),   norm, glm::vec2(1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+
+			vertices.push_back(v1);
+			vertices.push_back(v2);
+			vertices.push_back(v3);
+
+			std::vector<int> indices = { 0, 1, 2 };
+
+			Graphics::VertexBuffer vb(vertices, indices);
+			Graphics::Shader shader("res/shaders/lit.vert", "res/shaders/lit.frag", errorLogs);
+			Graphics::Material mat(shader);
+			Graphics::Mesh mesh(vb, mat);
+
+			//render loop
 			while (!glfwWindowShouldClose(window.window)) {
 				//time keeping
 				float frameTime = glfwGetTime();
@@ -46,12 +64,13 @@ namespace Peritwinkle {
 				//render 3d
 				glClearColor(0.2f, 0.6f, 1.0f, 1.0f);
 				glClear(GL_COLOR_BUFFER_BIT);
+				mesh.draw();
 
 				//render gui
 				GUI::begin_gui();
 				GUI::draw_debug_gui(deltaTime, frameRate);
 				GUI::draw_log_gui(infoLogs, warningLogs, errorLogs);
-				GUI::end_gui();
+				GUI::end_gui(window.window);
 
 				//poll events and swap buffers
 				glfwSwapBuffers(window.window);

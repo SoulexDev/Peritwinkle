@@ -13,8 +13,8 @@ namespace Peritwinkle {
 			GLuint vertexShader;
 			GLuint fragmentShader;
 
-			const char* vertexShaderRead = Utility::read_file(vertexShaderPath);
-			const char* fragmentShaderRead = Utility::read_file(fragmentShaderPath);
+			std::string vertexShaderRead = Utility::read_file(vertexShaderPath);
+			std::string fragmentShaderRead = Utility::read_file(fragmentShaderPath);
 
 			//create and compile shaders
 			if (!create_shader(vertexShaderRead, vertexShader, GL_VERTEX_SHADER, errorLogs)) {
@@ -40,7 +40,7 @@ namespace Peritwinkle {
 
 			if (!success) {
 				glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-				errorLogs.push_back(std::format("Shader compilation failed: {}", infoLog));
+				errorLogs.push_back(std::format("Shader program creation failed: {}", infoLog));
 				valid = false;
 			}
 
@@ -54,9 +54,11 @@ namespace Peritwinkle {
 
 			glUseProgram(shaderProgram);
 		}
-		bool Shader::create_shader(const char* source, GLuint &shader, GLenum shaderType, std::vector<std::string> &errorLogs) {
-			shader = glCreateShader(GL_VERTEX_SHADER);
-			glShaderSource(shader, 1, &source, NULL);
+		bool Shader::create_shader(std::string source, GLuint &shader, GLenum shaderType, std::vector<std::string> &errorLogs) {
+			const char* cSource = source.c_str();
+
+			shader = glCreateShader(shaderType);
+			glShaderSource(shader, 1, &cSource, NULL);
 			glCompileShader(shader);
 
 			int success;
@@ -65,7 +67,7 @@ namespace Peritwinkle {
 
 			if (!success) {
 				glGetShaderInfoLog(shader, 512, NULL, infoLog);
-				errorLogs.push_back(std::format("Shader compilation failed: {}", infoLog));
+				errorLogs.push_back(std::format("{} shader compilation failed: {}", shaderType, infoLog));
 
 				return false;
 			}

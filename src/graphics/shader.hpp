@@ -17,7 +17,7 @@ namespace Peritwinkle {
 			void use();
 
 		private:
-			static bool create_shader(const char* source, GLuint& shader, GLenum shaderType, std::vector<std::string>& errorLogs);
+			static bool create_shader(std::string source, GLuint& shader, GLenum shaderType, std::vector<std::string>& errorLogs);
 		};
 	}
 }

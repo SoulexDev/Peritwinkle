@@ -3,15 +3,9 @@
   <ItemGroup>
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\lib\imgui\imgui.cpp" />
-    <ClCompile Include="src\lib\imgui\imgui_draw.cpp" />
-    <ClCompile Include="src\lib\imgui\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="src\lib\imgui\imgui_tables.cpp" />
-    <ClCompile Include="src\lib\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\core\render.cpp" />
     <ClCompile Include="src\core\window.cpp" />
     <ClCompile Include="src\interface\gui_render.cpp" />
-    <ClCompile Include="src\lib\imgui\imgui_impl_glfw.cpp" />
     <ClCompile Include="src\interface\debug_gui.cpp" />
     <ClCompile Include="src\core\time.cpp" />
     <ClCompile Include="src\graphics\vertex_buffer.cpp" />
@@ -20,26 +14,26 @@
     <ClCompile Include="src\core\transform.cpp" />
     <ClCompile Include="src\graphics\mesh.cpp" />
     <ClCompile Include="src\graphics\material.cpp" />
+    <ClCompile Include="src\graphics\vertex.cpp" />
+    <ClCompile Include="src\lib\imgui\imgui.cpp" />
+    <ClCompile Include="src\lib\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\lib\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\lib\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\lib\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\lib\imgui\imgui_tables.cpp" />
+    <ClCompile Include="src\lib\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".csstools.json" />
     <None Include="Peritwinkle.slnx" />
-    <None Include="src\lib\imgui\imgui.ini" />
+    <None Include="res\shaders\lit.vert" />
+    <None Include="res\shaders\lit.frag" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lib\stb_image.h" />
-    <ClInclude Include="src\lib\imgui\imconfig.h" />
-    <ClInclude Include="src\lib\imgui\imgui.h" />
-    <ClInclude Include="src\lib\imgui\imgui_impl_opengl3.h" />
-    <ClInclude Include="src\lib\imgui\imgui_impl_opengl3_loader.h" />
-    <ClInclude Include="src\lib\imgui\imgui_internal.h" />
-    <ClInclude Include="src\lib\imgui\imstb_rectpack.h" />
-    <ClInclude Include="src\lib\imgui\imstb_textedit.h" />
-    <ClInclude Include="src\lib\imgui\imstb_truetype.h" />
     <ClInclude Include="src\core\render.hpp" />
     <ClInclude Include="src\core\window.hpp" />
     <ClInclude Include="src\interface\gui_render.hpp" />
-    <ClInclude Include="src\lib\imgui\imgui_impl_glfw.h" />
     <ClInclude Include="src\core\time.hpp" />
     <ClInclude Include="src\graphics\vertex.hpp" />
     <ClInclude Include="src\graphics\vertex_buffer.hpp" />
@@ -50,6 +44,15 @@
     <ClInclude Include="src\core\transform.hpp" />
     <ClInclude Include="src\core\object.hpp" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="src\lib\imgui\imconfig.h" />
+    <ClInclude Include="src\lib\imgui\imgui.h" />
+    <ClInclude Include="src\lib\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="src\lib\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\lib\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="src\lib\imgui\imgui_internal.h" />
+    <ClInclude Include="src\lib\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\lib\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\lib\imgui\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peritwinkle.rc" />
