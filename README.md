@@ -8,6 +8,8 @@
 ## About
 Peritwinkle is a data oriented 3D renderer using OpenGL. It's designed for realtime rendering, and for quickly exporting images of high quality renders(really, its a learning project, but you don't know that)
 
+![Screenshot of Peritwinkle](https://github.com/SoulexDev/Peritwinkle/blob/main/git_assets/peritwinkle_ss_1.png)
+
 > [!Warning]
 > This program is not functional yet, and is still a work in progress.
 
