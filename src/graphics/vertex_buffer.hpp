@@ -15,7 +15,7 @@ namespace Peritwinkle {
 			bool valid;
 
 			VertexBuffer();
-			VertexBuffer(std::vector<Vertex> vertices, std::vector<int> indices);
+			VertexBuffer(std::vector<Vertex> vertices, std::vector<unsigned int> indices);
 			void use();
 
 		private:

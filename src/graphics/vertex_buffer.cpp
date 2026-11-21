@@ -9,7 +9,7 @@ namespace Peritwinkle {
 			indicesSize = 0;
 			valid = false;
 		}
-		VertexBuffer::VertexBuffer(std::vector<Vertex> vertices, std::vector<int> indices) {
+		VertexBuffer::VertexBuffer(std::vector<Vertex> vertices, std::vector<unsigned int> indices) {
 			//store indices length for drawing and get the size of a vertex
 			indicesSize = indices.size();
 			GLsizei vertexSize = sizeof(Vertex);

@@ -3,13 +3,64 @@
 
 namespace Peritwinkle {
 	namespace Graphics {
-		Material::Material() { }
-		Material::Material(Shader shader) {
+		Material::Material() {
+			this->glossiness = 1.0f;
+			this->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+		}
+		Material::Material(Shader& shader) {
 			this->shader = shader;
+			this->glossiness = 1.0f;
+			this->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 		}
 		void Material::use() {
 			//TODO: implement textures
 			shader.use();
+			unsigned int texIndex = 0;
+
+			if (albedo.valid) {
+				albedo.bind(texIndex);
+				set_texture("albedo", texIndex);
+			}
+			set_bool("albedoValid", albedo.valid);
+			texIndex++;
+
+			if (normal.valid) {
+				normal.bind(texIndex);
+				set_texture("normal", texIndex);
+			}
+			set_bool("normalValid", normal.valid);
+			texIndex++;
+
+			if (specular.valid) {
+				specular.bind(texIndex);
+				set_texture("specular", texIndex);
+			}
+			set_bool("specularValid", specular.valid);
+			texIndex++;
+
+			if (emission.valid) {
+				emission.bind(texIndex);
+				set_texture("emission", texIndex);
+			}
+			set_bool("emissionValid", emission.valid);
+		}
+		void Material::assign_abledo(Texture& texture) {
+			albedo = texture;
+		}
+		void Material::assign_normal(Texture& texture) {
+			normal = texture;
+		}
+		void Material::assign_specular(Texture& texture) {
+			specular = texture;
+		}
+		void Material::assign_emission(Texture& texture) {
+			emission = texture;
+		}
+		void Material::set_glossiness(float glossiness) {
+			this->glossiness = glossiness;
+		}
+		void Material::set_color(glm::vec4 color) {
+			this->color = color;
 		}
 		void Material::set_float(const char* name, float value) {
 			int location = glGetUniformLocation(shader.shaderProgram, name);
@@ -17,6 +68,11 @@ namespace Peritwinkle {
 			glUniform1f(location, value);
 		}
 		void Material::set_integer(const char* name, int value) {
+			int location = glGetUniformLocation(shader.shaderProgram, name);
+			shader.use();
+			glUniform1i(location, value);
+		}
+		void Material::set_bool(const char* name, bool value) {
 			int location = glGetUniformLocation(shader.shaderProgram, name);
 			shader.use();
 			glUniform1i(location, value);

@@ -7,6 +7,16 @@ namespace Peritwinkle {
 		void draw_log_gui(std::vector<std::string> &infoLogs, std::vector<std::string> &warningLogs, std::vector<std::string> &errorLogs) {
 			ImGui::Begin("Log");
 
+			if (ImGui::Button("Clear debug logs")) {
+				infoLogs.clear();
+			}
+			if (ImGui::Button("Clear warning logs")) {
+				warningLogs.clear();
+			}
+			if (ImGui::Button("Clear error logs")) {
+				errorLogs.clear();
+			}
+
 			std::unordered_map<std::string, int> compactLogs;
 
 			for (std::string info : infoLogs) {

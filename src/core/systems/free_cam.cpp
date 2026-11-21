@@ -19,19 +19,15 @@ namespace Peritwinkle {
 
 			if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
 				x -= 1.0f;
-				infoLogs.push_back(std::format("D is pressed! X is {}", x));
 			}
 			if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
 				x += 1.0f;
-				infoLogs.push_back(std::format("A is pressed! X is {}", x));
 			}
 			if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
 				y += 1.0f;
-				infoLogs.push_back(std::format("W is pressed! Y is {}", y));
 			}
 			if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
 				y -= 1.0f;
-				infoLogs.push_back(std::format("S is pressed! Y is {}", y));
 			}
 
 			//infoLogs.push_back(std::format("X input: {}", x));
@@ -59,8 +55,6 @@ namespace Peritwinkle {
 
 				//keep this, maybe?
 				camX = glm::clamp(camX, -89.0f, 90.0f);
-
-				infoLogs.push_back("MOUSE is pressed!");
 			}
 
 			//putting it all together

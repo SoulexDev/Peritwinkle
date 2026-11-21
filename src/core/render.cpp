@@ -11,9 +11,11 @@
 #include "../graphics/mesh.hpp"
 #include "../graphics/material.hpp"
 #include "../graphics/shader.hpp"
+#include "../graphics/texture.hpp"
 
 #include <vector>
 #include <string>
+#include <format>
 
 namespace Peritwinkle {
 	namespace Core {
@@ -44,20 +46,32 @@ namespace Peritwinkle {
 			vertices.push_back(v2);
 			vertices.push_back(v3);
 
-			std::vector<int> indices = { 0, 1, 2 };
+			std::vector<unsigned int> indices = { 0, 1, 2 };
 
-			Graphics::VertexBuffer vb(vertices, indices);
+			//Graphics::VertexBuffer vb(vertices, indices);
 			Graphics::Shader shader("res/shaders/lit.vert", "res/shaders/lit.frag", errorLogs);
-			Graphics::Material mat(shader);
-			Graphics::Mesh mesh(vb, mat);
+			//Graphics::Material mat(shader);
+			//Graphics::Texture tex("res/textures/bikeconcept.png", warningLogs);
+			//mat.assign_abledo(tex);
+			std::vector<Graphics::Mesh> meshes = Graphics::Mesh::load_model("res/models/MrCapsule/MrCapsule.fbx", shader, errorLogs);
+			//Graphics::Mesh triangle(vb, mat);
 
-			Object testObj = Object(mesh);
+			std::vector<Object> objects;
+
+			if (meshes.size() > 0) {
+				for (unsigned int i = 0; i < meshes.size(); i++) {
+					objects.push_back(Object(std::format("Mr.Capsule (part {})", i), meshes[i]));
+				}
+			}
+			//else
+			//	objects.push_back(Object("Triangle", triangle));
 
 			Camera camera = Camera::create_fov_camera(window.window, 75, 0.1f, 1000.0f);
 			camera.transform.set_position(glm::vec3(0.0f, 0.0f, -3.0f));
 			Systems::FreeCam freeCam(&camera);
 
 			glEnable(GL_DEPTH_TEST);
+			glEnable(GL_CULL_FACE);
 
 			//render loop
 			while (!glfwWindowShouldClose(window.window)) {
@@ -84,12 +98,15 @@ namespace Peritwinkle {
 				//set the camera perspective so that the projection is always right, even with different window sizes
 				camera.set_perspective();
 				camera.calculate_matrices();
-				testObj.draw_object(camera);
+				for (Object obj : objects) {
+					obj.draw_object(camera);
+				}
 
 				//render gui
 				GUI::begin_gui();
 				GUI::draw_debug_gui(deltaTime, frameRate);
 				GUI::draw_log_gui(infoLogs, warningLogs, errorLogs);
+				GUI::draw_hierarchy_gui(objects);
 				GUI::end_gui(window.window);
 
 				//poll events and swap buffers

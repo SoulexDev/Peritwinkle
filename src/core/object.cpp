@@ -2,7 +2,11 @@
 
 namespace Peritwinkle {
 	namespace Core {
-		Object::Object(Peritwinkle::Graphics::Mesh mesh) {
+		Object::Object() {
+
+		}
+		Object::Object(std::string name, Peritwinkle::Graphics::Mesh mesh) {
+			this->name = name;
 			this->mesh = mesh;
 			transform = Transform();
 		}
@@ -14,6 +18,8 @@ namespace Peritwinkle {
 			mesh.material.set_mat4("proj", camera.projMatrix);
 
 			mesh.vertexBuffer.use();
+
+			glBindTexture(GL_TEXTURE_2D, 0);
 		}
 	}
 }

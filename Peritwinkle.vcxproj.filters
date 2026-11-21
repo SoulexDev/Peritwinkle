@@ -25,12 +25,15 @@
     <ClCompile Include="src\core\camera.cpp" />
     <ClCompile Include="src\core\systems\free_cam.cpp" />
     <ClCompile Include="src\core\object.cpp" />
+    <ClCompile Include="src\interface\hierarchy_gui.cpp" />
+    <ClCompile Include="src\graphics\texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".csstools.json" />
     <None Include="Peritwinkle.slnx" />
     <None Include="res\shaders\lit.vert" />
     <None Include="res\shaders\lit.frag" />
+    <None Include="..\..\Documents\libraries\Assimp\lib\x64\assimp-vc145-mt.dll" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lib\stb_image.h" />
@@ -58,6 +61,7 @@
     <ClInclude Include="src\lib\imgui\imstb_truetype.h" />
     <ClInclude Include="src\core\camera.hpp" />
     <ClInclude Include="src\core\systems\free_cam.hpp" />
+    <ClInclude Include="src\graphics\texture.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peritwinkle.rc" />

@@ -8,10 +8,13 @@
 namespace Peritwinkle {
 	namespace Core {
 		struct Object {
+		public:
+			std::string name;
 			Transform transform;
 			Peritwinkle::Graphics::Mesh mesh;
 
-			Object(Peritwinkle::Graphics::Mesh mesh);
+			Object();
+			Object(std::string name, Peritwinkle::Graphics::Mesh mesh);
 			void draw_object(Camera& camera);
 		};
 	}
